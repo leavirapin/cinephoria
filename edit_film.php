@@ -1,0 +1,122 @@
+<?php
+include 'connection.php';
+
+
+// sécurité admin et employe
+if (
+    !isset($_SESSION['user_id']) ||
+    !in_array($_SESSION['user_role'], ['admin', 'employe'])
+) {
+    header('Location: login.php');
+    exit;
+}
+
+// récupérer id
+$id = (int) ($_GET['idfilm'] ?? 0);
+
+// récupérer film
+$select = $conn->prepare("SELECT * FROM film WHERE idfilm = ?");
+$select->execute([$id]);
+$film = $select->fetch(PDO::FETCH_ASSOC);
+
+// update
+if (isset($_POST['submit'])) {
+
+    $titre = trim($_POST['titre']);
+    $resume = trim($_POST['resume']);
+    $duree = (int)$_POST['duree_min'];
+    $genre = trim($_POST['genre']);
+
+    $update = $conn->prepare("UPDATE film SET titre = ?, resume = ?, duree_min = ?, genre = ? WHERE idfilm = ?");
+    $update->execute([$titre, $resume, $duree, $genre, $id]);
+
+    if ($_SESSION['user_role'] == 'employe') {
+      header('Location: intranet.php');
+    }else{
+      header('Location:admin.php');
+    }
+    exit;
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>CINEPHORIA</title>
+</head>
+
+<body>
+    <?php include 'header.php'; ?>
+
+    <div class="main">
+        <div class="banner">
+            <h1>Modifier un film</h1>
+        </div>
+
+<section class="">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-5">
+          <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Modifie le film</p>
+
+                <?php if (!empty($message)): ?>
+                <p><?= htmlspecialchars($message); ?></p>
+        <?php endif; ?>
+
+<form method="post" class="mx-1 mx-md-4">
+
+    <div class="mb-3">
+        <label class="form-label">Titre</label>
+        <input type="text" name="titre" class="form-control" value="<?= htmlspecialchars($film['titre']) ?>">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Résumé</label>
+        <input type="text" name="resume" class="form-control" value="<?= htmlspecialchars($film['resume']) ?>">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Durée</label>
+        <input type="number" name="duree_min" class="form-control" value="<?= htmlspecialchars($film['duree_min']) ?>">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Genre</label>
+        <input type="text" name="genre" class="form-control" value="<?= htmlspecialchars($film['genre']) ?>">
+    </div>
+
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="submit" name="submit" class="btn">
+            Modifier
+        </button>
+    </div>
+
+</form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <?php include 'footer.php'; ?>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="script.js"></script>
+    <?php include 'alert.php'; ?>
+</body>
+</html>
+
+
+

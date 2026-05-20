@@ -1,0 +1,266 @@
+/* 1. Variables-Charte */
+:root{
+  --color-dark: #050505;
+  --color-dark-soft: #121212;
+  --color-primary: #c47938;
+  --color-primary-light:#d4af95;
+  --color-white: #ffffff;
+  --color-light: #f8f9fa;
+  --color-grey: #6c757d;
+}
+
+/* 2. Pour la base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* 3.Header-US1 */
+.navbar{
+  background-color: var(--color-dark-soft) !important;
+}
+
+.navbar-brand img {
+  height: 50px;
+}
+
+.navbar .nav-link {
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.navbar .nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* 4. Boutons */
+
+  .btn{
+    background-color: var(--color-primary);
+    padding: 8px 28px;
+    border-radius: 30px;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn:hover{
+    background-color: var(--color-dark-soft);
+    color: var(--color-white);
+  }
+
+  .btn:active{
+    background-color: var(--color-light);
+  }
+
+
+
+
+
+/* 5. Bannière accueuil */
+.banner {
+    min-height: 70vh;
+    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('images/photo2.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.banner-content h1 {
+    color: var(--color-white);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.banner-content p {
+  color: var(--color-light);
+    margin: 1rem 0;
+}
+
+
+/* 6. Films à la une */
+.films {
+  padding: 3rem 1rem;
+  background-color: var(--color-dark);
+}
+
+.films h1{
+  color: var(--color-white);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.films .box-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.films .box {
+    width: 200px;
+    background-color: var(--color-dark-soft);
+    border-radius: 18px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.films .box img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+}
+
+.films .box .btn{
+  margin: 1rem;
+}
+
+
+/* 6. Footer US3*/
+    /* 6. titre du footer*/
+.footer-column h3{
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+.site-footer {
+    position: relative;
+    width: 100%;
+    min-height: 45vh;
+    background-image: url('images/footer.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--color-white);
+}
+
+.footer-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--color-dark);
+    opacity: 0.65;
+}
+     /* 6. contenu du footer*/
+.inner-footer {
+    position: relative;
+    z-index: 1;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 2rem;
+
+    justify-content: center;   
+    text-align: center;        
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-column h3{
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--color-primary-light);
+}
+
+.footer-column p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.bottom-footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+
+/* PARTIE : RESPONSIVE */
+@media (max-width: 768px) {
+  .banner{
+    min-height: 60vh;
+  }
+
+  .banner-content h1{
+    font-size: 1.8rem;
+  }
+
+  .films .box img{
+    height: 260px;
+  }
+}
+
+
+
+
+/* 6. Page films US5*/
+.banner h1{
+  color: var(--color-light);
+}
+
+.filters-box .form-label{
+  color: var(--color-white) !important;
+}
+
+.filters-box{
+  background-color: var(--color-dark);
+  margin: 2rem auto;
+  width: 90%;
+  border-radius: 8px;
+}
+
+.card{
+  background-color: var(--color-dark-soft);
+  color: var(--color-light);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 10px;
+  border: 3px solid var(--color-dark-soft);
+}
+
+.card-img-top{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+
+}
+
+.card-title{
+  text-align: center;
+  color: var(--color-light);
+}
+
+.card-text{
+  font-style: italic;
+  color: var(--color-grey);
+}
+
+
+
+
+
