@@ -4,7 +4,7 @@ $host = "acela.proxy.rlwy.net";
 $port = "28901";
 $dbname = "railway";
 $user = "root";
-$password = "TON_MOT_DE_PASSE_RAILWAY";
+$password = "kNkXlDMOibBroYoyTCFeDdsvGweAIdsT";
 
 try {
     $conn = new PDO(
