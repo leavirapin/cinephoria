@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$db_name = 'mysql:host=sql202.infinityfree.com;dbname=if0_42164512_cinephoria;charset=utf8mb4';
-$db_user = 'if0_42164512';
-$db_password = 'rpJQCAHBWm9u0';
+$db_name = 'mysql:host=acela.proxy.rlwy.net;port=28901;dbname=railway;charset=utf8mb4';
+$db_user = 'root';
+$db_password = 'kNkXlDMOibBroYoyTCFeDdsvGweAIdsT';
 
 try {
 
@@ -33,14 +33,6 @@ function unique_id(){
 }
 
 ?>
-
-
-
-
-
-
-
-
 
 
 
